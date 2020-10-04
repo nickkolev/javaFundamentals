@@ -1,0 +1,27 @@
+package bg.softuni.javaFundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int number = Integer.parseInt(scanner.nextLine());
+        String numberAsString = Integer.toString(number);
+        int sum = 0;
+
+        for (int i = 0; i < numberAsString.length(); i++) {
+            int digit = Integer.parseInt("" + numberAsString.charAt(i));
+            int factNumber = 1;
+            for (int j = digit; j > 0; j--) {
+                factNumber *= j;
+            }
+            sum += factNumber;
+        }
+        if (number == sum) {
+            System.out.println("yes");
+        }else{
+            System.out.println("no");
+        }
+    }
+}
