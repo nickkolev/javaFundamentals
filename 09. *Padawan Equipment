@@ -1,0 +1,29 @@
+package bg.softuni.javaFundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double ivanChoMoney = Double.parseDouble(scanner.nextLine());
+        int students = Integer.parseInt(scanner.nextLine());
+        double singleLightsaberPrice = Double.parseDouble(scanner.nextLine());
+        double singleRobePrice = Double.parseDouble(scanner.nextLine());
+        double singleBeltPrice = Double.parseDouble(scanner.nextLine());
+
+        double lightsabersCost = singleLightsaberPrice * Math.ceil(students * 1.10);
+        double robesCost = singleRobePrice * students;
+        int freeBelts = students / 6;
+        double beltsCost = (students - freeBelts) * singleBeltPrice;
+
+        double totalCost = lightsabersCost + robesCost + beltsCost;
+        if (ivanChoMoney >= totalCost) {
+            System.out.printf("The money is enough - it would cost %.2flv.", totalCost);
+        }else {
+            double moneyNeeded = totalCost - ivanChoMoney;
+            System.out.printf("Ivan Cho will need %.2flv more.", moneyNeeded);
+        }
+
+    }
+}
