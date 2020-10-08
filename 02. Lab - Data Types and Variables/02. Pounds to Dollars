@@ -1,0 +1,14 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double britishPounds = Double.parseDouble(scanner.nextLine());
+        double USD = 1.31 * britishPounds;
+
+        System.out.printf("%.3f", USD);
+    }
+}
