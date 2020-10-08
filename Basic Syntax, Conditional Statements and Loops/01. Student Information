@@ -1,52 +1,16 @@
 package bg.softuni.fundamentals;
 
 import java.util.Scanner;
-import java.math.RoundingMode;
 
-public class Main {
+public class StudentInformation {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int days = Integer.parseInt(scanner.nextLine());
+        String name = scanner.nextLine();
+        int age = Integer.parseInt(scanner.nextLine());
+        double grade = Double.parseDouble(scanner.nextLine());
 
-        double money = 0;
-        int daysWin = 0;
-        int daysLost = 0;
-
-        for (int i = 0; i < days; i++) {
-            String command = scanner.nextLine();
-
-            int counterWins = 0;
-            int counterLoses = 0;
-            double moneyToday = 0;
-
-            while (!command.equals("Finish")) {
-                String gameType = command;
-                String result = scanner.nextLine();
-
-                if (result.equals("win")) {
-                    moneyToday += 20;
-                    counterWins ++;
-                } else {
-                    counterLoses ++;
-                }
-
-                command = scanner.nextLine();
-            }
-            if (counterWins > counterLoses) {
-                moneyToday *= 1.1;
-                daysWin ++;
-            } else {
-                daysLost ++;
-            }
-            money += moneyToday;
-        }
-        if (daysWin > daysLost) {
-            money *= 1.2;
-            System.out.printf("You won the tournament! Total raised money: %.02f", money);
-        } else {
-            System.out.printf("You lost the tournament! Total raised money: %.02f", money);
-        }
+        System.out.printf("Name: %s, Age: %d, Grade: %.2f", name, age, grade);
 
     }
 }
