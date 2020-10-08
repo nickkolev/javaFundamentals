@@ -1,0 +1,17 @@
+package bg.softuni.fundamentals;
+
+import java.math.BigDecimal;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String townName = scanner.nextLine();
+        double townPopulation = Double.parseDouble(scanner.nextLine());
+        int townArea = Integer.parseInt(scanner.nextLine());
+
+        System.out.printf("Town %s has population of %.0f and area %d square km.", townName, townPopulation, townArea);
+
+    }
+}
