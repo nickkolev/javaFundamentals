@@ -1,0 +1,18 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int integer = Integer.parseInt(scanner.nextLine());
+        int times = Integer.parseInt(scanner.nextLine());
+
+        do {
+            int result = integer * times;
+            System.out.printf("%d X %d = %d\n", integer, times, result);
+            times ++;
+        } while (times <= 10);
+    }
+}
