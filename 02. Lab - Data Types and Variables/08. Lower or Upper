@@ -1,0 +1,19 @@
+package bg.softuni.fundamentals;
+
+import java.math.BigDecimal;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        char character = scanner.nextLine().charAt(0);
+
+        if (character >= 97) {
+            System.out.println("lower-case");
+        }else {
+            System.out.println("upper-case");
+        }
+
+    }
+}
