@@ -1,0 +1,27 @@
+package bg.softuni.javaFundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int pokePower = Integer.parseInt(scanner.nextLine());
+        int distanceBetweenTargets = Integer.parseInt(scanner.nextLine());
+        int exhaustionFactor = Integer.parseInt(scanner.nextLine());
+
+        int pokeCounter = 0;
+        int currentPokePower = pokePower;
+
+        while (currentPokePower >= distanceBetweenTargets) {
+            currentPokePower-= distanceBetweenTargets;
+            pokeCounter ++;
+
+            if (currentPokePower == pokePower / 2.0 && exhaustionFactor != 0) {
+                currentPokePower = currentPokePower / exhaustionFactor;
+            }
+        }
+        System.out.println(currentPokePower);
+        System.out.println(pokeCounter);
+    }
+}
