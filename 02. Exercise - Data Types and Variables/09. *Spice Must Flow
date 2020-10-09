@@ -1,0 +1,29 @@
+package bg.softuni.javaFundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int startingYield = Integer.parseInt(scanner.nextLine());
+
+        int totalSpice = 0;
+        int daysCounter = 0;
+        while (startingYield >= 100) {
+            totalSpice += startingYield;
+            if (totalSpice >= 26) {
+                totalSpice -= 26;
+            }
+            daysCounter ++;
+            startingYield -= 10;
+        }
+        if (totalSpice >= 26) {
+            totalSpice -= 26;
+        }
+
+        System.out.println(daysCounter);
+        System.out.println(totalSpice);
+
+    }
+}
