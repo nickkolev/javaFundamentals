@@ -1,0 +1,33 @@
+package bg.softuni.javaFundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Вариант 1
+
+        int sum = 0;
+        String line = scanner.nextLine();
+        for (int i = 0; i < line.length(); i++) {
+            char digitChar = line.charAt(i);
+            int digit = Character.getNumericValue(digitChar);
+            sum += digit;
+        }
+        System.out.println(sum);
+
+        
+        /* Вариант 2
+
+        int sum = 0;
+        int number = Integer.parseInt(scanner.nextLine());
+        while (number != 0) {
+            sum += number % 10;
+            number = number / 10;
+        }
+        System.out.println(sum);
+        */
+        
+    }
+}
