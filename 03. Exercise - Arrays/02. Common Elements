@@ -1,0 +1,27 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String[] firstArray = scanner.nextLine().split(" ");
+        String[] secondArray = scanner.nextLine().split(" ");
+
+        int counter = 0;
+        for (String value : secondArray) {
+            for (String s : firstArray) {
+                if (value.equals(s)) {
+                    System.out.print(value + " ");
+                    counter++;
+                    break;
+                }
+            }
+        }
+        if (counter == 0) {
+            System.out.println("There are no common elements in these arrays!");
+        }
+
+    }
+}
