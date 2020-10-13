@@ -1,0 +1,28 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String inputLine = scanner.nextLine();
+        String[] inputArray = inputLine.split(" ");
+
+        int[] numbersArray = new int[inputArray.length];
+        for (int i = 0; i < inputArray.length; i++) {
+            numbersArray[i] = Integer.parseInt(inputArray[i]);
+        }
+
+        int evenSum = 0;
+        int oddSum = 0;
+        for (int number : numbersArray) {
+            if (number % 2 == 0) {
+                evenSum += number;
+            } else{
+                oddSum += number;
+            }
+        }
+        System.out.println(evenSum - oddSum);
+    }
+}
