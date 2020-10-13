@@ -1,0 +1,23 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String inputLine = scanner.nextLine();
+        String[] inputAsArray = inputLine.split(" ");
+        
+        for (int i = 0; i < inputAsArray.length / 2; i++) {
+            int swapIndex = inputAsArray.length - 1 - i;
+            String swap = inputAsArray[i];
+            inputAsArray[i] = inputAsArray[swapIndex];
+            inputAsArray[swapIndex] = swap;
+        }
+
+        for (String strings : inputAsArray) {
+            System.out.print(strings + " ");
+        }
+    }
+}
