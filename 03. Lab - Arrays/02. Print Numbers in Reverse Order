@@ -1,0 +1,32 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int n = (scanner.nextInt());
+
+        int[] array = new int[n];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = scanner.nextInt();
+        }
+
+        // Вариант 1 за обръщане на масива - с фор цикъл който върти на обратно:
+        for (int i = array.length - 1; i >= 0; i--) {
+        }
+
+        // Вариант 2 за обръщане на масива - с променлива swap ( ще сменяме 2 пълни бутилки - трябва ни 3-та ):
+        for (int i = 0; i < array.length / 2; i++) {
+            int swapIndex = array.length - i - 1;
+            int oldNumbersI = array[i];
+            array[i] = array[swapIndex];
+            array[swapIndex] = oldNumbersI;
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+    }
+}
