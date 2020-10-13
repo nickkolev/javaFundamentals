@@ -1,0 +1,39 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String inputLine = scanner.nextLine();
+        String[] inputLineArray = inputLine.split(" ");
+
+        int[] array = new int[inputLineArray.length];
+        for (int i = 0; i < inputLineArray.length; i++) {
+            array[i] = Integer.parseInt(inputLineArray[i]);
+        }
+
+        while (array.length > 1) {
+            int[] condensed = new int[array.length - 1];
+
+            int i = 0;
+            for (i = 0; i < condensed.length; i++) {
+                condensed[i] = array[i] + array[i + 1];
+            }
+
+            for (int number : array) {
+                System.out.print(number + " ");
+            }
+            System.out.print("--> ");
+
+            for (int j = 0; j < array.length - 1; j++) {
+                System.out.print(array[j] + "+" + array[j + 1] + " ");
+            }
+            System.out.println("");
+
+            array = condensed;
+        }
+        System.out.print("Total sum is: " + array[0]);
+    }
+}
