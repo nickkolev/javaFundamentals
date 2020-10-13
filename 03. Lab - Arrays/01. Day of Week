@@ -10,6 +10,8 @@ public class Main {
 
         if (dayNumber >= 1 && dayNumber <= 7) {
             System.out.println(daysOfTheWeek[dayNumber - 1]);
+        }else {
+            System.out.println("Invalid day!");
         }
     }
 }
