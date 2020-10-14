@@ -1,0 +1,37 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Програма, която мести елементите на масива от ляво на дясно ---->
+
+        String[] array = scanner.nextLine().split(" ");
+        int rotations = Integer.parseInt(scanner.nextLine());
+
+        for (int i = 0; i < rotations; i++) {
+            String last = array[array.length - 1];
+            for (int j = array.length - 1; j > 0; j--) {
+                array[j] = array[j - 1];
+            }
+            array[0] = last;
+        }
+        System.out.print(String.join(" ", array));
+
+
+        System.out.println();
+        // Програма, която мести елементите на масива от дясно на ляво <----
+
+        String first = array[0];
+        for (int i = 0; i < rotations; i++) {
+            for (int j = 0; j < array.length - 1; j++) {
+                array[j] = array[j + 1];
+            }
+            array[array.length - 1] = first;
+        }
+        System.out.print(String.join(" ", array));
+
+    }
+}
