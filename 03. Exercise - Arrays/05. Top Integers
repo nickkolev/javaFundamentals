@@ -1,0 +1,32 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String inputLine = scanner.nextLine();
+        String[] inputStrings = inputLine.split(" ");
+        int[] array = new int[inputStrings.length];
+
+        for (int i = 0; i < array.length; i++) {
+            array[i] = Integer.parseInt(inputStrings[i]);
+        }
+
+        for (int i = 0; i < array.length - 1; i++) {
+            boolean isBigger = true;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] <= array[j]) {
+                    isBigger = false;
+                    break;
+                }
+            }
+            if (isBigger) {
+                System.out.print(array[i] + " ");
+            }
+        }
+        System.out.print(array[array.length - 1]);
+
+    }
+}
