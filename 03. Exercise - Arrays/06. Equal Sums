@@ -1,0 +1,45 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String inputLine = scanner.nextLine();
+        String[] arrayStrings = inputLine.split(" ");
+        int[] array = new int[arrayStrings.length];
+        for (int i = 0; i < arrayStrings.length; i++) {
+            array[i] = Integer.parseInt(arrayStrings[i]);
+        }
+
+        if (array.length == 1){
+            System.out.println(0);
+        } else {
+            boolean flag = false;
+            int index = 0;
+            for (int i = 0; i < array.length; i++) {
+                int leftSum = 0;
+                for (int j = 0; j < i; j++) {
+                    leftSum = leftSum + array[j];
+                }
+
+                int rightSum = 0;
+                for (int j = i + 1; j < array.length; j++) {
+                    rightSum = rightSum + array[j];
+                }
+
+                if (rightSum == leftSum) {
+                    index = i;
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) {
+                System.out.println(index);
+            }else{
+                System.out.println("no");
+            }
+        }
+    }
+}
