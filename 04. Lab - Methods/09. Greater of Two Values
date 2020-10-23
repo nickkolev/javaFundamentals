@@ -1,0 +1,49 @@
+package bg.softuni.fundamentals;
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String valuesType = scanner.nextLine();
+
+        if (valuesType.equals("int")) {
+            int first = Integer.parseInt(scanner.nextLine());
+            int second = Integer.parseInt(scanner.nextLine());
+            System.out.println(getMax(first, second));
+        }
+        else if (valuesType.equals("char")) {
+            char first = scanner.nextLine().charAt(0);
+            char second = scanner.nextLine().charAt(0);
+            System.out.println(getMax(first, second));
+        }
+        else if(valuesType.equals("string")) {
+            String first = scanner.nextLine();
+            String second = scanner.nextLine();
+            System.out.println(getMax(first, second));
+        }
+    }
+
+    public static int getMax(int firstInt, int secondInt) {
+        if (firstInt > secondInt) {
+            return firstInt;
+        }
+        return secondInt;
+    }
+
+    public static char getMax(char firstChar, char secondChar) {
+        if (firstChar > secondChar) {
+            return firstChar;
+        }
+        return secondChar;
+    }
+
+    public static String getMax(String firstString, String secondString) {
+        if (firstString.compareTo(secondString) >= 1) {
+            return firstString;
+        }
+        return secondString;
+    }
+}
