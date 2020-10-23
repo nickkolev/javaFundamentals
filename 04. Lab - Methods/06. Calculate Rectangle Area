@@ -1,0 +1,19 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double width = Double.parseDouble(scanner.nextLine());
+        double length = Double.parseDouble(scanner.nextLine());
+
+        double area = rectangleArea(width, length);
+        System.out.printf("%.0f", area);
+    }
+
+    public static double rectangleArea(double a, double b) {
+        return a * b;
+    }
+}
