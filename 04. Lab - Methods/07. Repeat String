@@ -9,16 +9,15 @@ public class Main {
         String text = scanner.nextLine();
         int repetitions = Integer.parseInt(scanner.nextLine());
 
-        System.out.println(printText(text, repetitions));
+        System.out.println(repeat(text, repetitions));
     }
 
-    public static String printText(String text, int repetitions) {
-        String result = "";
+    public static String repeat(String text, int count) {
+        String[] repetitions = new String[count];
 
-        for (int i = 0; i < repetitions; i++) {
-            result = result + text;
+        for (int i = 0; i < count; i++) {
+            repetitions[i] = text;
         }
 
-        return result;
+        return String.join("", repetitions);
     }
-}
