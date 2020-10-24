@@ -1,0 +1,30 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int firstNumber = Integer.parseInt(scanner.nextLine());
+        char operator = scanner.nextLine().charAt(0);
+        int secondNumber = Integer.parseInt(scanner.nextLine());
+
+        System.out.printf("%.0f", result(firstNumber, operator, secondNumber));
+    }
+
+    public static double result(int x, char operator, int y) {
+        double result = 0.0;
+
+        if (operator == '/') {
+            result = (double)x / y;
+        } else if (operator == '*') {
+            result = (double)x * y;
+        } else if (operator == '+') {
+            result = x + y;
+        } else if (operator == '-') {
+            result = x - y;
+        }
+        return result;
+    }
+}
