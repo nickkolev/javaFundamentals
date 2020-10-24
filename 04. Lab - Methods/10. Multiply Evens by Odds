@@ -1,0 +1,44 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int number = scanner.nextInt();
+        System.out.println(getMultipleOfEvensAndOdds(number));
+    }
+
+    public static int getMultipleOfEvensAndOdds(int number) {
+        int evensSum = getEvenSum(number);
+        int oddsSum = getOddSum(number);
+
+        return evensSum * oddsSum;
+    }
+
+    public static int getEvenSum(int n) {
+        int evenSum = 0;
+
+        while (n != 0) {
+            int lastDigit = n % 10;
+            if (lastDigit % 2 == 0) {
+                evenSum += lastDigit;
+            }
+            n = n / 10;
+        }
+        return evenSum;
+    }
+
+    public static int getOddSum(int n) {
+        int oddSum = 0;
+        while (n != 0) {
+            int lastDigit = n % 10;
+            if (lastDigit % 2 != 0) {
+                oddSum += lastDigit;
+            }
+            n = n / 10;
+        }
+        return oddSum;
+    }
+}
