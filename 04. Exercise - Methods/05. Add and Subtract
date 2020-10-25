@@ -1,0 +1,32 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int firstNumber = Integer.parseInt(scanner.nextLine());
+        int secondNumber = Integer.parseInt(scanner.nextLine());
+        int thirdNumber = Integer.parseInt(scanner.nextLine());
+
+        int sum = getSum(firstNumber, secondNumber);
+        int result = subtractFromSum(sum, thirdNumber);
+        System.out.println(result);
+
+        int result2 = result(firstNumber, secondNumber, thirdNumber);
+        System.out.println(result2);
+    }
+
+    public static int getSum(int x, int y) {
+        return x + y;
+    }
+
+    public static int subtractFromSum(int x, int y) {
+        return x - y;
+    }
+
+    public static int result(int x, int y, int z) {
+        return getSum(x, y) - z;
+    }
+}
