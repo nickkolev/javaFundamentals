@@ -1,0 +1,28 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        char start = scanner.nextLine().charAt(0);
+        char end = scanner.nextLine().charAt(0);
+
+        if (start < end) {
+            charactersInRange(start, end);
+        } else {
+            charactersInRange(end, start);
+        }
+    }
+
+    private static void charactersInRange(char start, char end) {
+        for (char i = ++start; i < end; i++) {
+            if (i == start) {
+                System.out.print(i);
+            } else {
+                System.out.print(" " + i);
+            }
+        }
+    }
+}
