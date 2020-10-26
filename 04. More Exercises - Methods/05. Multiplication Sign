@@ -1,0 +1,26 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int number1 = Integer.parseInt(scanner.nextLine());
+        int number2 = Integer.parseInt(scanner.nextLine());
+        int number3 = Integer.parseInt(scanner.nextLine());
+
+        positiveOrNegative(number1, number2, number3);
+    }
+
+    public static void positiveOrNegative(int x, int y,int z) {
+        if (x == 0 || y == 0 || z == 0) {
+            System.out.println("zero");
+        } else if ((x > 0 && y > 0 && z > 0) || (x > 0 && y < 0 && z < 0) || (x < 0 && y > 0 && z < 0) || (x < 0 && y < 0 && z > 0)) {
+            System.out.println("positive");
+        } else {
+            System.out.println("negative");
+        }
+    }
+}
