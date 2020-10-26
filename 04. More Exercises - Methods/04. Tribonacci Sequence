@@ -1,0 +1,32 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int number = Integer.parseInt(scanner.nextLine());
+
+
+        for (int i = 1; i <= number; i++) {
+            if (i == 1) {
+                System.out.print(tribonacci(i));
+            } else {
+                System.out.print(" " + tribonacci(i));
+            }
+        }
+    }
+
+    public static int tribonacci(int num) {
+        if (num == 1) {
+            return 1;
+        } else if (num == 0) {
+            return 0;
+        } else if (num == 2) {
+            return 1;
+        } else {
+            return (tribonacci(num - 1) + tribonacci(num - 2) + tribonacci(num - 3));
+        }
+    }
+}
