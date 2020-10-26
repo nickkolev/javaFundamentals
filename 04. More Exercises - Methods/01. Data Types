@@ -1,0 +1,31 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String input = scanner.nextLine();
+        if (input.equals("int")) {
+            printResult(Integer.parseInt(scanner.nextLine()));
+        } else if (input.equals("real")) {
+            printResult(Double.parseDouble(scanner.nextLine()));
+        }else if (input.equals("string")) {
+            printResult(scanner.nextLine());
+        }
+    }
+
+    public static void printResult(int number) {
+        System.out.println(number * 2);
+    }
+
+    public static void printResult(double number) {
+        double result = number * 1.5;
+        System.out.printf("%.2f", result);
+    }
+
+    public static void printResult(String text) {
+        System.out.println("$" + text + "$");
+    }
+}
