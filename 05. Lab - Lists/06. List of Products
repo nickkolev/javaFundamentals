@@ -1,0 +1,33 @@
+package bg.softuni.fundamentals;
+
+import java.text.DecimalFormat;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int linesOfProducts = Integer.parseInt(scanner.nextLine());
+        List<String> listOfProducts = new ArrayList<>();
+        for (int i = 0; i < linesOfProducts; i++) {
+            listOfProducts.add(scanner.nextLine());
+        }
+        Collections.sort(listOfProducts);
+
+        for (int i = 1; i <= linesOfProducts; i++) {
+            System.out.println(i + "." + listOfProducts.get(i - 1));
+        }
+    }
+
+    public static List<Integer> parseLineOfNumbers(Scanner scanner) {
+        String input = scanner.nextLine();
+        String[] numbersAsString = input.split(" ");
+
+        List<Integer> numbers = new ArrayList<>();
+        for (String num : numbersAsString) {
+            int number = Integer.parseInt(num);
+            numbers.add(number);
+        }
+        return numbers;
+    }
+}
