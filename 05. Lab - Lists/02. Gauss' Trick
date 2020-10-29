@@ -9,27 +9,22 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String[] input = scanner.nextLine().split(" ");
+        String inputLine = scanner.nextLine();
+        String[] numbersAsStrings = inputLine.split(" ");
+        List<Integer> numbers = new ArrayList<>();
 
-        List<Integer> inputList = new ArrayList<>();
-        for (int i = 0; i < input.length; i++) {
-            inputList.add(Integer.parseInt(input[i]));
+        for (String number : numbersAsStrings) {
+            numbers.add(Integer.parseInt(number));
         }
 
-        List<Integer> newList = new ArrayList<>();
-
-        int i = 0;
-        while (i < inputList.size() / 2) {
-            int sum = inputList.get(i) + inputList.get(inputList.size() - 1 - i);
-            newList.add(sum);
-            i++;
-        }
-        if (inputList.size() % 2 != 0) {
-            newList.add(inputList.get(inputList.size() / 2));
+        int size = numbers.size();
+        for (int i = 0; i < size / 2; i++) {
+            numbers.set(i, numbers.get(i) + numbers.get(numbers.size() - 1));
+            numbers.remove(numbers.size() - 1);
         }
 
-        for (int j = 0; j < newList.size(); j++) {
-            System.out.print(newList.get(j) + " ");
+        for (int number : numbers) {
+            System.out.print(number + " ");
         }
 
     }
