@@ -1,0 +1,50 @@
+package bg.softuni.fundamentals;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Integer> firstList = parseLineOfNumbers(scanner);
+        List<Integer> secondList = parseLineOfNumbers(scanner);
+        List<Integer> resultList = new ArrayList<>();
+
+        int i = 0;
+        while (i < firstList.size() && i < secondList.size()) {
+            resultList.add(firstList.get(i));
+            resultList.add(secondList.get(i));
+            i++;
+        }
+
+        if (firstList.size() > secondList.size()) {
+            for (int j = i; j < firstList.size(); j++) {
+                resultList.add(firstList.get(j));
+            }
+        } else {
+            for (int j = i; j < secondList.size(); j++) {
+                resultList.add(secondList.get(j));
+            }
+        }
+
+        for (int number : resultList) {
+            System.out.print(number + " ");
+        }
+
+    }
+
+    public static List<Integer> parseLineOfNumbers(Scanner scanner) {
+        String input = scanner.nextLine();
+        String[] numbersAsString = input.split(" ");
+
+        List<Integer> numbers = new ArrayList<>();
+        for (String num : numbersAsString) {
+            int number = Integer.parseInt(num);
+            numbers.add(number);
+        }
+        return numbers;
+    }
+}
