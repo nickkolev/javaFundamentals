@@ -1,0 +1,59 @@
+package bg.softuni.fundamentals;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Integer> list = parseLineOfNumbers(scanner);
+
+        String command = scanner.nextLine();
+        while (!(command.equals("end"))) {
+            String commands[] = command.split(" ");
+            switch (commands[0]) {
+                case "Add": {
+                    int number = Integer.parseInt(commands[1]);
+                    list.add(number);
+                    break;
+                }
+                case "Remove": {
+                    int number = Integer.parseInt(commands[1]);
+                    list.remove(Integer.valueOf(number));
+                    break;
+                }
+                case "RemoveAt": {
+                    int index = Integer.parseInt(commands[1]);
+                    list.remove(index);
+                    break;
+                }
+                case "Insert": {
+                    int number = Integer.parseInt(commands[1]);
+                    int index = Integer.parseInt(commands[2]);
+                    list.add(index, number);
+                    break;
+                }
+            }
+            command = scanner.nextLine();
+        }
+
+        for (int number : list) {
+            System.out.print(number + " ");
+        }
+    }
+
+    public static List<Integer> parseLineOfNumbers(Scanner scanner) {
+        String input = scanner.nextLine();
+        String[] numbersAsString = input.split(" ");
+
+        List<Integer> numbers = new ArrayList<>();
+        for (String num : numbersAsString) {
+            int number = Integer.parseInt(num);
+            numbers.add(number);
+        }
+        return numbers;
+    }
+}
