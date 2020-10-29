@@ -1,0 +1,150 @@
+package bg.softuni.fundamentals;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Integer> list = parseLineOfNumbers(scanner);
+
+        String command = scanner.nextLine();
+        while (!(command.equals("end"))) {
+            String commands[] = command.split(" ");
+            int counter = 0;
+            switch (commands[0]) {
+                case "Contains": {
+                    int number = Integer.parseInt(commands[1]);
+                    boolean contains = list.contains(number);
+                    if (contains) {
+                        System.out.println("Yes");
+                    } else {
+                        System.out.println("No such number");
+                    }
+                    break;
+                }
+                case "Print": {
+                    if (commands[1].equals("even")) {
+                        counter = 0;
+                        for (int number : list) {
+                            if (number % 2 == 0) {
+                                if (counter == 0){
+                                    System.out.print(number);
+                                    counter++;
+                                } else {
+                                    System.out.print(" " + number);
+                                }
+                            }
+                        }
+                        System.out.println();
+                    } else {
+                        counter = 0;
+                        for (int number : list) {
+                            if (number % 2 != 0) {
+                                if (counter == 0){
+                                    System.out.print(number);
+                                    counter++;
+                                } else {
+                                    System.out.print(" " + number);
+                                }
+                            }
+                        }
+                        System.out.println();
+                    }
+                    break;
+                }
+                case "Get": {
+                    int sum = 0;
+                    for (int number : list) {
+                        sum += number;
+                    }
+                    System.out.println(sum);
+                    break;
+                }
+                case "Filter": {
+                    String condition = commands[1];
+                    int number = Integer.parseInt(commands[2]);
+                    switch (condition) {
+                        case "<": {
+                            counter = 0;
+                            for (int num : list) {
+                                if (num < number) {
+                                    if (counter == 0) {
+                                        System.out.print(num);
+                                        counter++;
+                                    } else {
+                                        System.out.print(" " + num);
+                                    }
+                                }
+                            }
+                            System.out.println();
+                            break;
+                        }
+                        case ">": {
+                            counter = 0;
+                            for (int num : list) {
+                                if (num > number) {
+                                    if (counter == 0) {
+                                        System.out.print(num);
+                                        counter++;
+                                    } else {
+                                        System.out.print(" " + num);
+                                    }
+                                }
+                            }
+                            System.out.println();
+                            break;
+                        }
+                        case ">=": {
+                            counter = 0;
+                            for (int num : list) {
+                                if (num >= number) {
+                                    if (counter == 0) {
+                                        System.out.print(num);
+                                        counter++;
+                                    } else {
+                                        System.out.print(" " + num);
+                                    }
+                                }
+                            }
+                            System.out.println();
+                            break;
+                        }
+                        case "<=": {
+                            counter = 0;
+                            for (int num : list) {
+                                if (num <= number) {
+                                    if (counter == 0) {
+                                        System.out.print(num);
+                                        counter++;
+                                    } else {
+                                        System.out.print(" " + num);
+                                    }
+                                }
+                            }
+                            System.out.println();
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            command = scanner.nextLine();
+        }
+    }
+
+    public static List<Integer> parseLineOfNumbers(Scanner scanner) {
+        String input = scanner.nextLine();
+        String[] numbersAsString = input.split(" ");
+
+        List<Integer> numbers = new ArrayList<>();
+        for (String num : numbersAsString) {
+            int number = Integer.parseInt(num);
+            numbers.add(number);
+        }
+        return numbers;
+    }
+}
