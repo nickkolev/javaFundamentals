@@ -1,0 +1,55 @@
+package bg.softuni.fundamentals;
+
+import java.text.DecimalFormat;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Integer> numbers = readIntegerList(scanner);
+        String[] bombInfo = scanner.nextLine().split(" ");
+        int bomb = Integer.parseInt(bombInfo[0]);
+        int power = Integer.parseInt(bombInfo[1]);
+
+        while (numbers.contains(bomb)) {
+            int index = numbers.indexOf(bomb);
+            int start = Math.max(0, index - power);
+            int end = Math.min(index + power, numbers.size() - 1);
+
+            for (int i = end; i >= start; i--) {
+                numbers.remove(i);
+            }
+        }
+
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+
+        System.out.println(sum);
+    }
+
+    private static void printList(List<Integer> numbers) {
+        for (int number : numbers) {
+            System.out.print(number + " ");
+        }
+    }
+
+    private static void printStringList(List<String> list) {
+        for (String s : list) {
+            System.out.println(s);
+        }
+    }
+
+    private static List<Integer> readIntegerList(Scanner scanner) {
+        String[] input = scanner.nextLine().split(" ");
+        List<Integer> list = new ArrayList<>();
+        for (String s : input) {
+            list.add(Integer.parseInt(s));
+        }
+        return list;
+    }
+
+
+}
