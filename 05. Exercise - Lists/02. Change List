@@ -1,0 +1,48 @@
+package bg.softuni.fundamentals;
+
+import java.text.DecimalFormat;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Integer> numbers = readIntegerList(scanner);
+
+        String command = scanner.nextLine();
+        while (!("end".equals(command))) {
+            String[] tokens = command.split("\\s+");
+            if ("Delete".equals(tokens[0])) {
+                int elementToDelete = Integer.parseInt(tokens[1]);
+                while (numbers.contains(elementToDelete)) {
+                    numbers.remove(Integer.valueOf(elementToDelete));
+                }
+            } else if ("Insert".equals(tokens[0])){
+                int element = Integer.parseInt(tokens[1]);
+                int index = Integer.parseInt(tokens[2]);
+                if (index >= 0 && index < numbers.size()) {
+                    numbers.add(index, element);
+                }
+            }
+            command = scanner.nextLine();
+        }
+        printList(numbers);
+    }
+
+    private static void printList(List<Integer> numbers) {
+        for (int number : numbers) {
+            System.out.print(number + " ");
+        }
+    }
+
+    private static List<Integer> readIntegerList(Scanner scanner) {
+        String[] input = scanner.nextLine().split(" ");
+        List<Integer> list = new ArrayList<>();
+        for (String s : input) {
+            list.add(Integer.parseInt(s));
+        }
+        return list;
+    }
+
+
+}
