@@ -1,0 +1,49 @@
+package bg.softuni.fundamentals;
+
+import java.text.DecimalFormat;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Integer> wagons = readIntegerList(scanner);
+        int capacity = Integer.parseInt(scanner.nextLine());
+
+        String command = scanner.nextLine();
+        while (!("end".equals(command))) {
+            String[] tokens = command.split(" ");
+            if (tokens[0].equals("Add")) {
+                wagons.add(Integer.parseInt(tokens[1]));
+            } else {
+                int passengers = Integer.parseInt(tokens[0]);
+                for (int i = 0; i < wagons.size(); i++) {
+                    if (passengers <= (capacity - wagons.get(i))) {
+                        wagons.set(i, wagons.get(i) + passengers);
+                        break;
+                    }
+                }
+            }
+
+            command = scanner.nextLine();
+        }
+        printList(wagons);
+    }
+
+    private static void printList(List<Integer> numbers) {
+        for (int number : numbers) {
+            System.out.print(number + " ");
+        }
+    }
+
+    private static List<Integer> readIntegerList(Scanner scanner) {
+        String[] input = scanner.nextLine().split(" ");
+        List<Integer> list = new ArrayList<>();
+        for (String s : input) {
+            list.add(Integer.parseInt(s));
+        }
+        return list;
+    }
+
+
+}
