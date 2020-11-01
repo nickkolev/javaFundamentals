@@ -1,0 +1,68 @@
+package bg.softuni.fundamentals;
+
+import java.text.DecimalFormat;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Integer> firstHand = readIntegerList(scanner);
+        List<Integer> secondHand = readIntegerList(scanner);
+
+        int i = 0;
+        while (firstHand.size() > 0 && secondHand.size() > 0) {
+            if (firstHand.get(0) > secondHand.get(0)) {
+                firstHand.add(firstHand.get(0));
+                firstHand.add(secondHand.get(0));
+                firstHand.remove(0);
+                secondHand.remove(0);
+            } else if (firstHand.get(i) < secondHand.get(i)) {
+                secondHand.add(secondHand.get(0));
+                secondHand.add(firstHand.get(0));
+                secondHand.remove(0);
+                firstHand.remove(0);
+            } else if (firstHand.get(i).equals(secondHand.get(i))) {
+                firstHand.remove(0);
+                secondHand.remove(0);
+            }
+        }
+        if (firstHand.size() == 0) {
+            int sum = 0;
+            for (int card : secondHand) {
+                sum += card;
+            }
+            System.out.println("Second player wins! Sum: " + sum);
+        } else {
+            int sum = 0;
+            for (int card : firstHand) {
+                sum += card;
+            }
+            System.out.println("First player wins! Sum: " + sum);
+        }
+
+    }
+
+    private static void printList(List<Integer> numbers) {
+        for (int number : numbers) {
+            System.out.print(number + " ");
+        }
+    }
+
+    private static void printStringList(List<String> list) {
+        for (String s : list) {
+            System.out.println(s);
+        }
+    }
+
+    private static List<Integer> readIntegerList(Scanner scanner) {
+        String[] input = scanner.nextLine().split(" ");
+        List<Integer> list = new ArrayList<>();
+        for (String s : input) {
+            list.add(Integer.parseInt(s));
+        }
+        return list;
+    }
+
+
+}
