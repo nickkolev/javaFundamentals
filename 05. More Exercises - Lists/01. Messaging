@@ -1,0 +1,66 @@
+package bg.softuni.fundamentals;
+
+import java.math.MathContext;
+import java.text.DecimalFormat;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Integer> numbers = readIntegerList(scanner);
+        String[] string = scanner.nextLine().split("");
+        List<String> list = new ArrayList<>();
+        for (String s : string) {
+            list.add(s);
+        }
+        int size = list.size();
+        List<String> result = new ArrayList<>();
+
+        for (int i = 0; i < numbers.size(); i++) {
+            int element = numbers.get(i);
+            int sum = 0;
+            while (element > 0) {
+                int lastDigit = element % 10;
+                element = element / 10;
+                sum += lastDigit;
+            }
+            while (sum >= size) {
+                sum = sum - size;
+            }
+            String toAdd = list.remove(sum);
+            result.add(toAdd);
+        }
+        printStringList(result);
+    }
+
+    private static void printList(List<Integer> numbers) {
+        for (int number : numbers) {
+            System.out.print(number + " ");
+        }
+    }
+
+    private static void printStringList(List<String> list) {
+        for (String s : list) {
+            System.out.print(s);
+        }
+    }
+
+    private static List<Integer> readIntegerList(Scanner scanner) {
+        String[] input = scanner.nextLine().split(" ");
+        List<Integer> list = new ArrayList<>();
+        for (String s : input) {
+            list.add(Integer.parseInt(s));
+        }
+        return list;
+    }
+
+    private static List<String> readList(Scanner scanner) {
+        String[] input = scanner.nextLine().split(" ");
+        List<String> list = new ArrayList<>();
+        for (String s : input) {
+            list.add(s);
+        }
+        return list;
+    }
+}
