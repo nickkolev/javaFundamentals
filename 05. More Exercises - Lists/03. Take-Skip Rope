@@ -1,0 +1,90 @@
+package bg.softuni.fundamentals;
+
+import java.math.MathContext;
+import java.text.DecimalFormat;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String inputString = scanner.nextLine();
+        String[] inputArray = inputString.split("");
+
+        List<String> input = new ArrayList<>();
+        for (String s : inputArray) {
+            input.add(s);
+        }
+
+        List<String> numbersList = new ArrayList<>();
+        for (int i = 0; i < input.size();) {
+            if (input.get(i).equals("0") || input.get(i).equals("1") || input.get(i).equals("2") || input.get(i).equals("3") || input.get(i).equals("4") || input.get(i).equals("5") || input.get(i).equals("6") || input.get(i).equals("7") || input.get(i).equals("8") || input.get(i).equals("9")) {
+                numbersList.add(input.get(i));
+                input.remove(i);
+            }
+            else {
+                i++;
+            }
+        }
+
+        List<String> takeList = new ArrayList<>();
+        List<String> skipList = new ArrayList<>();
+        int index = 0;
+        for (String s : numbersList) {
+            if (index % 2 == 0) {
+                takeList.add(s);
+                index++;
+            } else {
+                skipList.add(s);
+                index++;
+            }
+        }
+
+        List<String> result = new ArrayList<>();
+        int counter = 0;
+        for (int i = 0; i < takeList.size(); i++) {
+            int take = Integer.parseInt(takeList.get(i));
+            for (int j = 0; j < take; j++) {
+                result.add(input.get(counter));
+                counter++;
+            }
+
+            int skip = Integer.parseInt(skipList.get(i));
+            for (int j = 0; j < skip; j++) {
+                counter++;
+            }
+        }
+
+        printStringList(result);
+    }
+
+    private static void printList(List<Integer> numbers) {
+        for (int number : numbers) {
+            System.out.print(number + " ");
+        }
+    }
+
+    private static void printStringList(List<String> list) {
+        for (String s : list) {
+            System.out.print(s);
+        }
+    }
+
+    private static List<Integer> readIntegerList(Scanner scanner) {
+        String[] input = scanner.nextLine().split(" ");
+        List<Integer> list = new ArrayList<>();
+        for (String s : input) {
+            list.add(Integer.parseInt(s));
+        }
+        return list;
+    }
+
+    private static List<String> readList(Scanner scanner) {
+        String[] input = scanner.nextLine().split("");
+        List<String> list = new ArrayList<>();
+        for (String s : input) {
+            list.add(s);
+        }
+        return list;
+    }
+}
