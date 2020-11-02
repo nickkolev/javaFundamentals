@@ -1,0 +1,68 @@
+package bg.softuni.fundamentals;
+
+import java.math.MathContext;
+import java.text.DecimalFormat;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Integer> input = readIntegerList(scanner);
+        int middleIndex = input.size() / 2;
+
+        double leftSum = 0;
+        for (int i = 0; i < middleIndex; i++) {
+            if (input.get(i).equals(0)) {
+                leftSum = leftSum * 0.8;
+            } else {
+                leftSum += input.get(i);
+            }
+        }
+
+        double rightSum = 0;
+        for (int i = input.size() - 1; i > middleIndex; i--) {
+            if (input.get(i).equals(0)) {
+                rightSum = rightSum * 0.8;
+            } else {
+                rightSum += input.get(i);
+            }
+        }
+
+        if (leftSum < rightSum) {
+            System.out.printf("The winner is left with total time: %.1f", leftSum);
+        } else {
+            System.out.printf("The winner is right with total time: %.1f", rightSum);
+        }
+    }
+
+    private static void printList(List<Integer> numbers) {
+        for (int number : numbers) {
+            System.out.print(number + " ");
+        }
+    }
+
+    private static void printStringList(List<String> list) {
+        for (String s : list) {
+            System.out.print(s);
+        }
+    }
+
+    private static List<Integer> readIntegerList(Scanner scanner) {
+        String[] input = scanner.nextLine().split(" ");
+        List<Integer> list = new ArrayList<>();
+        for (String s : input) {
+            list.add(Integer.parseInt(s));
+        }
+        return list;
+    }
+
+    private static List<String> readList(Scanner scanner) {
+        String[] input = scanner.nextLine().split(" ");
+        List<String> list = new ArrayList<>();
+        for (String s : input) {
+            list.add(s);
+        }
+        return list;
+    }
+}
