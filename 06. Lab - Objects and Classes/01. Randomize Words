@@ -1,0 +1,24 @@
+package bg.softuni.javaFundamentals;
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String wordList = scanner.nextLine();
+        String[] wordsArray = wordList.split(" ");
+
+        Random randomNumber = new Random();
+        for (int i = 0; i < wordsArray.length; i++) {
+            int x = randomNumber.nextInt(wordsArray.length);
+            int y = randomNumber.nextInt(wordsArray.length);
+            String oldWordsX = wordsArray[x];
+            wordsArray[x] = wordsArray[y];
+            wordsArray[y] = oldWordsX;
+        }
+
+        System.out.println(String.join(System.lineSeparator(), wordsArray));
+    }
+}
