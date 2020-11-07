@@ -1,0 +1,106 @@
+package bg.softuni.javaFundamentals;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+
+public class Main {
+    static class Student {
+        String firstName;
+        String lastName;
+        int age;
+        String hometown;
+
+        Student(String firstName, String lastName, int age, String hometown) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.hometown = hometown;
+        }
+
+        String getFirstName() {
+            return this.firstName;
+        }
+
+        String getLastName() {
+            return this.lastName;
+        }
+
+        int getAge() {
+            return this.age;
+        }
+
+        String getHometown() {
+            return this.hometown;
+        }
+
+        void setAge(int age) {
+            this.age = age;
+        }
+
+        void setHometown(String hometown) {
+            this.hometown = hometown;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String input = scanner.nextLine();
+        List<Student> students = new ArrayList<>();
+
+        while (!input.equals("end")) {
+            String[] data = input.split(" ");
+
+            String firstName = data[0];
+            String lastName = data[1];
+            int age = Integer.parseInt(data[2]);
+            String hometown = data[3];
+
+            if (isStudentExisting(students, firstName, lastName)) {
+                Student student = getStudent(students, firstName, lastName);
+                student.setAge(age);
+                student.setHometown(hometown);
+            } else {
+                Student student = new Student(firstName, lastName, age, hometown);
+                students.add(student);
+            }
+
+            input = scanner.nextLine();
+        }
+
+        String city = scanner.nextLine();
+        printResult(students, city);
+    }
+
+    private static Student getStudent(List<Student> students, String firstName, String lastName) {
+        Student existingStudent = null;
+
+        for (Student student : students) {
+            if (student.getFirstName().equals(firstName) && student.getLastName().equals(lastName)) {
+                existingStudent = student;
+            }
+        }
+        return existingStudent;
+    }
+
+    private static boolean isStudentExisting(List<Student> students, String firstName, String lastName) {
+        for (Student student : students) {
+            if (student.getFirstName().equals(firstName) && student.getLastName().equals(lastName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void printResult(List<Student> students, String city) {
+        for (Student student : students) {
+            if (student.getHometown().equals(city)) {
+                System.out.printf("%s %s is %d years old%n", student.getFirstName(),
+                        student.getLastName(), student.getAge());
+            }
+        }
+    }
+}
