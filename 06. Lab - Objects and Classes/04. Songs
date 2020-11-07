@@ -1,0 +1,77 @@
+package bg.softuni.javaFundamentals;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+
+    static class Song {
+        String typeList;
+        String name;
+        String time;
+
+        Song(String typeList, String name, String time){
+            this.typeList = typeList;
+            this.name = name;
+            this.time = time;
+        }
+
+        String getTypeList() {
+            return this.typeList;
+        }
+        void setTypeList(String typeList) {
+            this.typeList = typeList;
+        }
+
+        String getName() {
+            return this.name;
+        }
+        void setName(String name) {
+            this.name = name;
+        }
+
+        String getTime() {
+            return this.time;
+        }
+        void setTime(String time) {
+            this.time = time;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int numberSongs = Integer.parseInt(scanner.nextLine());
+        List<Song> songs = new ArrayList<>();
+        
+        for (int i = 0; i < numberSongs; i++) {
+            String[] data = scanner.nextLine().split("_");
+
+            String type = data[0];
+            String name = data[1];
+            String time = data[2];
+
+            Song song = new Song(type, name, time);
+            songs.add(song);
+
+        }
+
+        String typeList = scanner.nextLine();
+        printResult(typeList, songs);
+    }
+
+    public static void printResult(String typeList, List<Song> songs) {
+        if ("all".equals(typeList)) {
+            for (Song song : songs) {
+                System.out.println(song.getName());
+            }
+        } else {
+            for (Song song : songs) {
+                if (song.getTypeList().equals(typeList)) {
+                    System.out.println(song.getName());
+                }
+            }
+        }
+    }
+}
