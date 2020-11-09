@@ -1,0 +1,16 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int number = Integer.parseInt(scanner.nextLine());
+        int position = Integer.parseInt(scanner.nextLine());
+
+        Integer.toBinaryString(number);
+        number = number & ~(1 << position) | (0 << position);
+        System.out.println(number);
+    }
+}
