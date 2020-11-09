@@ -1,0 +1,25 @@
+package bg.softuni.fundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int number = Integer.parseInt(scanner.nextLine());
+        int digit = Integer.parseInt(scanner.nextLine());
+
+        int counter = 0;
+        while (number > 0) {
+            if (digit == number % 2) {
+                counter++;
+            }
+            number = number / 2;
+        }
+        if (digit == 0) {
+            System.out.println("We have " + counter + " zeros");
+        } else {
+            System.out.println("We have " + counter + " ones.");
+        }
+    }
+}
