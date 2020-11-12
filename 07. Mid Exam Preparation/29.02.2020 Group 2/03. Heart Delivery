@@ -1,0 +1,59 @@
+package bg.softuni.fundamentals;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String input = scanner.nextLine();
+        String[] hearts = input.split("@");
+        Integer[] neededHearths = new Integer[hearts.length];
+        for (int i = 0; i < neededHearths.length; i++) {
+            neededHearths[i] = Integer.parseInt(hearts[i]);
+        }
+
+        int index = 0;
+        String command = scanner.nextLine();
+        while(!"Love!".equals(command)) {
+            String[] tokens = command.split(" ");
+            int length = Integer.parseInt(tokens[1]);
+
+            index += length;
+            if (index >= neededHearths.length) {
+                index = 0;
+            }
+
+            boolean hasValentines = false;
+            if (neededHearths[index] == 0) {
+                System.out.printf("Place %d already had Valentine's day.%n", index);
+                hasValentines = true;
+            }else {
+                neededHearths[index] -= 2;
+            }
+
+            if (neededHearths[index] == 0 && !hasValentines) {
+                System.out.printf("Place %d has Valentine's day.%n", index);
+            }
+
+            command = scanner.nextLine();
+        }
+        System.out.printf("Cupid's last position was %d.%n", index);
+
+        boolean isSuccessful = true;
+        int failedHouses = 0;
+        for (int house : neededHearths) {
+            if (house != 0) {
+                isSuccessful = false;
+                failedHouses++;
+            }
+        }
+        if (isSuccessful) {
+            System.out.printf("Mission was successful.");
+        } else {
+            System.out.printf("Cupid has failed %d places.", failedHouses);
+        }
+    }
+}
