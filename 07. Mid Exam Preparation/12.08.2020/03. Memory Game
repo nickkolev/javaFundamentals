@@ -1,0 +1,63 @@
+package bg.softuni.fundamentals;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String[] input = scanner.nextLine().split(" ");
+        List<String> list = new ArrayList<>();
+        for (String string : input) {
+            list.add(string);
+        }
+
+        int moves = 0;
+        String command = scanner.nextLine();
+        while (!"end".equals(command)) {
+            moves++;
+            String[] indexes = command.split(" ");
+            int indexOne = Integer.parseInt(indexes[0]);
+            int indexTwo = Integer.parseInt(indexes[1]);
+
+            if ((indexOne == indexTwo) || (indexOne < 0) || (indexTwo < 0) || (indexOne > list.size()) || (indexTwo > list.size())) {
+                String element = "-" + moves + "a";
+                int middle = list.size() / 2;
+                list.add(middle, element);
+                list.add(middle, element);
+                System.out.println("Invalid input! Adding additional elements to the board");
+            } else {
+                if (list.get(indexOne).equals(list.get(indexTwo))) {
+                    String itemToRemove = list.get(indexOne);
+                    System.out.printf("Congrats! You have found matching elements - %s!%n", itemToRemove);
+                    list.remove(itemToRemove);
+                    list.remove(itemToRemove);
+                } else {
+                    System.out.println("Try again!");
+                }
+            }
+
+            if (list.isEmpty()) {
+                System.out.println("You have won in " + moves + " turns!");
+                break;
+            }
+            command = scanner.nextLine();
+        }
+        if (!list.isEmpty()) {
+            System.out.println("Sorry you lose :(");
+            printList(list);
+        }
+    }
+
+    private static void printList(List<String> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (i == list.size() - 1) {
+                System.out.print(list.get(i));
+            } else {
+                System.out.print(list.get(i) + " ");
+            }
+        }
+    }
+}
