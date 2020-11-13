@@ -1,0 +1,55 @@
+package bg.softuni.fundamentals;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String[] numbersAsString = scanner.nextLine().split(" ");
+        List<Integer> numbers = parseList(numbersAsString);
+
+        double average = 0;
+        for (int number : numbers) {
+            average += number;
+        }
+        average = average / numbers.size();
+
+        List<Integer> result = new ArrayList<>();
+        for (int number : numbers) {
+            if (number > average) {
+                result.add(number);
+            }
+        }
+
+        Collections.sort(result);
+        Collections.reverse(result);
+
+        while (result.size() > 5) {
+            result.remove(5);
+        }
+
+        printList(result);
+    }
+
+    private static void printList(List<Integer> result) {
+        if (result.isEmpty()) {
+            System.out.println("No");
+        } else {
+            for (int number : result) {
+                System.out.print(number + " ");
+            }
+        }
+    }
+
+    private static List<Integer> parseList(String[] numbersAsString) {
+        List<Integer> list = new ArrayList<>();
+        for (String s : numbersAsString) {
+            list.add(Integer.parseInt(s));
+        }
+        return list;
+    }
+}
