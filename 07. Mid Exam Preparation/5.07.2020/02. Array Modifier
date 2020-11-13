@@ -1,0 +1,62 @@
+package bg.softuni.fundamentals;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String input = scanner.nextLine();
+        Integer[] array = readArray(input);
+
+        String command = scanner.nextLine();
+        while (!"end".equals(command)) {
+            String[] tokens = command.split(" ");
+
+            switch (tokens[0]) {
+                case "swap":
+                    int index1 = Integer.parseInt(tokens[1]);
+                    int index2 = Integer.parseInt(tokens[2]);
+
+                    int temp = array[index1];
+                    array[index1] = array[index2];
+                    array[index2] = temp;
+                    break;
+                case "multiply":
+                    index1 = Integer.parseInt(tokens[1]);
+                    index2 = Integer.parseInt(tokens[2]);
+                    array[index1] = array[index1] * array[index2];
+                    break;
+                case "decrease":
+                    for (int i = 0; i < array.length; i++) {
+                        array[i] = array[i] - 1;
+                    }
+                    break;
+            }
+            command = scanner.nextLine();
+        }
+        printArrat(array);
+    }
+
+    private static void printArrat(Integer[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (i == array.length - 1) {
+                System.out.print(array[i]);
+            } else {
+                System.out.print(array[i] + ", ");
+            }
+        }
+    }
+
+    private static Integer[] readArray(String numbersAsString) {
+        String[] input = numbersAsString.split(" ");
+        Integer[] array = new Integer[input.length];
+        for (int i = 0; i < input.length; i++) {
+            array[i] = Integer.parseInt(input[i]);
+        }
+
+        return array;
+    }
+}
