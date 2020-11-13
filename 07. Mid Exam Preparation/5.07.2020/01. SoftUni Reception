@@ -1,0 +1,23 @@
+package bg.softuni.fundamentals;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int studentsPerHour = Integer.parseInt(scanner.nextLine()) + Integer.parseInt(scanner.nextLine()) + Integer.parseInt(scanner.nextLine());
+        int students = Integer.parseInt(scanner.nextLine());
+
+        int hours = 0;
+        while (students > 0) {
+            hours++;
+            if (hours % 4 != 0) {
+                students -= studentsPerHour;
+            }
+        }
+        System.out.println("Time needed: " + hours + "h.");
+    }
+}
