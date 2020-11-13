@@ -1,0 +1,67 @@
+package bg.softuni.fundamentals;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String[] input = scanner.nextLine().split(" ");
+        List<Integer> targets = new ArrayList<>();
+        for (String str : input) {
+            targets.add(Integer.parseInt(str));
+        }
+
+        String command = scanner.nextLine();
+        while (!"End".equals(command)){
+            String[] tokens = command.split(" ");
+
+            switch (tokens[0]) {
+                case "Shoot":
+                    int index = Integer.parseInt(tokens[1]);
+                    int power = Integer.parseInt(tokens[2]);
+                    if (index >= 0 && index < targets.size()) {
+                        if (power >= targets.get(index)) {
+                            targets.remove(index);
+                        }else {
+                            targets.set(index, targets.get(index) - power);
+                        }
+                    }
+                    break;
+                case "Add":
+                    index = Integer.parseInt(tokens[1]);
+                    power = Integer.parseInt(tokens[2]);
+                    if (index >= 0 && index < targets.size()) {
+                        targets.add(index, power);
+                    } else {
+                        System.out.println("Invalid placement!");
+                    }
+                    break;
+                case "Strike":
+                    index = Integer.parseInt(tokens[1]);
+                    int radius = Integer.parseInt(tokens[2]);
+                    if (index - radius >= 0 && index + radius < targets.size()) {
+                        int start = index - radius;
+                        int end = index + radius;
+                        for (int i = start; i <= end; i++) {
+                            targets.remove(start);
+                        }
+                    } else {
+                        System.out.println("Strike missed!");
+                    }
+                    break;
+            }
+            command = scanner.nextLine();
+        }
+        for (int i = 0; i < targets.size(); i++) {
+            if (i == targets.size() - 1) {
+                System.out.print(targets.get(i));
+            } else {
+                System.out.print(targets.get(i) + "|");
+            }
+        }
+    }
+}
