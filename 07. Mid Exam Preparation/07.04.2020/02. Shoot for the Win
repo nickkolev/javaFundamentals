@@ -1,0 +1,49 @@
+package bg.softuni.fundamentals;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String[] input = scanner.nextLine().split(" ");
+        Integer[] targets = new Integer[input.length];
+        for (int i = 0; i < targets.length; i++) {
+            targets[i] = Integer.parseInt(input[i]);
+        }
+
+        int index = -1;
+        int shotTargets = 0;
+
+        String command = scanner.nextLine();
+        while (!"End".equals(command)) {
+            index = Integer.parseInt(command);
+
+            if (index < 0 || index >= targets.length) {
+                command = scanner.nextLine();
+                continue;
+            }
+            if (targets[index] != -1) {
+                int targetValue = targets[index];
+                targets[index] = -1;
+                shotTargets++;
+
+                for (int i = 0; i < targets.length; i++) {
+                    if (targets[i] > targetValue && targets[i] != -1) {
+                        targets[i] = targets[i] - targetValue;
+                    } else if (targets[i] <= targetValue && targets[i] != -1) {
+                        targets[i] = targets[i] + targetValue;
+                    }
+                }
+            }
+            command = scanner.nextLine();
+        }
+        System.out.printf("Shot targets: %d -> ", shotTargets);
+        for (int target : targets) {
+            System.out.print(target + " ");
+        }
+    }
+}
