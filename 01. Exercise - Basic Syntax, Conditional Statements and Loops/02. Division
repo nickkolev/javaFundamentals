@@ -23,3 +23,53 @@ public class Main {
         }
     }
 }
+
+
+
+
+
+
+//////////// Втори вариант:
+
+
+
+
+
+
+package bg.softuni.javaFundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        //•	0-2 – baby;
+        //•	3-13 – child;
+        //•	14-19 – teenager;
+        //•	20-65 – adult;
+        //•	>=66 – elder;
+        //•	All the values are inclusive.
+
+        int number = Integer.parseInt(scanner.nextLine());
+        int divider = 0;
+
+        if (number % 10 == 0) {
+            divider = 10;
+        } else if (number % 7 == 0) {
+            divider = 7;
+        } else if (number % 6 == 0) {
+            divider = 6;
+        } else if (number % 3 == 0) {
+            divider = 3;
+        } else if (number % 2 == 0) {
+            divider = 2;
+        }
+
+        if (divider != 0) {
+            System.out.printf("The number is divisible by %d", divider);
+        } else {
+            System.out.println("Not divisible");
+        }
+    }
+}
