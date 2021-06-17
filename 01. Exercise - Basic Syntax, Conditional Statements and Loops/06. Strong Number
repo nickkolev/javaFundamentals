@@ -25,3 +25,52 @@ public class Main {
         }
     }
 }
+
+
+
+
+
+
+
+//////// втори начин
+
+
+
+
+
+
+
+
+
+
+
+package bg.softuni.javaFundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int startNumber = Integer.parseInt(scanner.nextLine());
+
+        int number = startNumber;
+        int lastDigit = 0;
+        int sumFact = 0;
+        while (number > 0) {
+            lastDigit = number % 10;
+            number = number / 10;
+            int fact = 1;
+            for (int i = 1; i <= lastDigit; i++) {
+                fact = fact * i;
+            }
+            sumFact += fact;
+        }
+
+        if (sumFact == startNumber) {
+            System.out.println("yes");
+        } else {
+            System.out.println("no");
+        }
+    }
+}
