@@ -1,0 +1,78 @@
+package bg.softuni.javaFundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int dnaLength = Integer.parseInt(scanner.nextLine());
+
+        String command = scanner.nextLine();
+
+        int row = 0;
+
+        int longestSequence = 0;
+        int leftmostIndex = 1000;
+        int greatestSum = 0;
+        int bestRow = 0;
+        int[] bestDNA = new int[dnaLength];
+
+        while (!command.equals("Clone them!")) {
+
+            row++;
+
+            String[] input = command.split("!");
+            int[] dna = new int[input.length];
+            for (int i = 0; i < dna.length; i++) {
+                dna[i] = Integer.parseInt(input[i]);
+            }
+
+            // 1  0  1  1  0
+            // 0  1  2  3  4
+
+            int maxLength = 0;
+            int endIndex = 0;
+            int startIndex = 0;
+            int sequence = 0;
+            int length = 1;
+            int sum = 0;
+
+            for (int i = 0; i < dna.length - 1; i++) {
+                if (dna[i] == dna[i + 1] && dna[i] == 1) {
+                    length++;
+                } else {
+                    length = 1;
+                }
+
+                if (maxLength < length) {
+                    maxLength = length;
+                    endIndex = i + 1;
+                    sequence = maxLength;
+                    startIndex = endIndex - sequence + 1;
+                }
+            }
+
+            for (int number : dna) {
+                sum += number;
+            }
+
+            if ((longestSequence < sequence) ||
+                    ((longestSequence == sequence) && (leftmostIndex > startIndex))
+                || ((longestSequence == sequence) && (leftmostIndex == startIndex) && (sum > greatestSum))) {
+                longestSequence = sequence;
+                leftmostIndex = startIndex;
+                bestRow = row;
+                greatestSum = sum;
+                bestDNA = dna;
+            }
+
+            command = scanner.nextLine();
+        }
+
+        System.out.printf("Best DNA sample %d with sum: %d.%n", bestRow, greatestSum);
+        for (int i : bestDNA) {
+            System.out.print(i + " ");
+        }
+    }
+}
