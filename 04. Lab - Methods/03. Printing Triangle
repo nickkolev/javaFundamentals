@@ -25,6 +25,52 @@ public class Main {
         }
         System.out.println();
     }
+}
 
 
+
+
+
+
+//// може би по-добра версия: 
+
+
+
+
+
+
+package bg.softuni.javaFundamentals;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int number = Integer.parseInt(scanner.nextLine());
+
+        printTopHalf(number);
+        printDownHalf(number);
+
+
+    }
+
+    private static void printDownHalf(int number) {
+        for (int i = number - 1; i > 0; i--) {
+            printRow(i);
+        }
+    }
+
+    private static void printTopHalf(int number) {
+        for (int i = 1; i <= number; i++) {
+            printRow(i);
+        }
+    }
+
+    private static void printRow(int i) {
+        for (int j = 1; j <= i; j++) {
+            System.out.print(j + " ");
+        }
+        System.out.println();
+    }
 }
